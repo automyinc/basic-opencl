@@ -10,7 +10,11 @@
 
 #include <automy/basic_opencl/CommandQueue.h>
 
+#ifdef _MSC_VER
 #include <automy_basic_opencl_export.h>
+#else
+#define AUTOMY_BASIC_OPENCL_EXPORT
+#endif
 
 #include <CL/cl.h>
 

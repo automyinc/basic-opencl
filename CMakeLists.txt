@@ -16,13 +16,12 @@ target_include_directories(automy_basic_opencl
 )
 
 
-include(GenerateExportHeader)
-GENERATE_EXPORT_HEADER(automy_basic_opencl)
-include_directories("${CMAKE_CURRENT_BINARY_DIR}")
-set(AUTOMY_BASIC_OPENCL_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}" CACHE STRING "")	
-
-
 if(MSVC)
+	include(GenerateExportHeader)
+	GENERATE_EXPORT_HEADER(automy_basic_opencl)
+	include_directories("${CMAKE_CURRENT_BINARY_DIR}")
+	set(AUTOMY_BASIC_OPENCL_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}" CACHE STRING "")
+
 	set_target_properties(automy_basic_opencl PROPERTIES ENABLE_EXPORTS 1)
 	set_target_properties(automy_basic_opencl PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS 1)
 	
@@ -30,7 +29,7 @@ if(MSVC)
 	add_library(OpenCL INTERFACE IMPORTED)
 	set_target_properties(OpenCL PROPERTIES INTERFACE_LINK_LIBRARIES "${OpenCL_LIBRARY}")
 	
-	target_include_directories(automy_basic_opencl PRIVATE ${OpenCL_INCLUDE_DIR})		
+	target_include_directories(automy_basic_opencl PRIVATE ${OpenCL_INCLUDE_DIR})			
 endif()
 
 
