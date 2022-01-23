@@ -10,6 +10,12 @@
 
 #include <automy/basic_opencl/CommandQueue.h>
 
+#ifdef _MSC_VER
+#include <automy_basic_opencl_export.h>
+#else
+#define AUTOMY_BASIC_OPENCL_EXPORT
+#endif
+
 #include <CL/cl.h>
 
 #include <vector>
@@ -21,11 +27,11 @@
 namespace automy {
 namespace basic_opencl {
 
-extern std::mutex g_mutex;
+AUTOMY_BASIC_OPENCL_EXPORT extern std::mutex g_mutex;
 
-extern cl_platform_id g_platform;
+AUTOMY_BASIC_OPENCL_EXPORT extern cl_platform_id g_platform;
 
-extern cl_context g_context;
+AUTOMY_BASIC_OPENCL_EXPORT extern cl_context g_context;
 
 
 void create_context(cl_device_type device_type, const std::string& platform_name = "");
