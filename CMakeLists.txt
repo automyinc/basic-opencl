@@ -47,7 +47,6 @@ if(MSVC)
 	)
 endif()
 
-install(DIRECTORY kernel/ DESTINATION share/kernel)
 install(DIRECTORY include/ DESTINATION include)
 
 install(TARGETS automy_basic_opencl DESTINATION lib)
